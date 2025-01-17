@@ -1,3 +1,5 @@
+//D:\CypressProject\Public-Project\web-ecom\cypress\e2e\login.cy.js
+
 import { loginPage } from "../pom/loginPage";
 
 describe('Login Tests', () => {

@@ -1,3 +1,4 @@
+//cypress\pom\loginPage.js
 class LoginPage {
     open() {
         const environment = Cypress.env('ENV') || 'test';
