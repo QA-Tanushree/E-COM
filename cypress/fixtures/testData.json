@@ -1,0 +1,21 @@
+ {
+    "test": {
+        "username":"tan00@gmail.com",
+        "password":"Tanu123",
+        "lockUser":"locked_out_user",
+        "performanceUser":"performance_glitch_user",
+        "errorUser":"error_user",
+        "visualUser":"visual_user",
+        "problemUser":"problem_user"
+    },
+    "live": {
+        "username":"standard_user",
+        "password":"secret_sauce",
+        "lockUser":"locked_out_user",
+        "performanceUser":"performance_glitch_user",
+        "errorUser":"error_user",
+        "visualUser":"visual_user",
+        "problemUser":"problem_user"
+    }
+  }
+  
