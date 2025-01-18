@@ -1,11 +1,11 @@
-//cypress.config.js
+// cypress.config.js
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
     baseUrl: process.env.CYPRESS_ENV === 'live' 
       ? 'https://demowebshop.tricentis.com/login' 
-      : 'https://demowebshop.tricentis.com/login',
+      : 'https://demowebshop.tricentis.com/login', // Replace with a different URL for non-live if needed
     
     setupNodeEvents(on, config) {
       on('task', {
@@ -36,4 +36,12 @@ module.exports = defineConfig({
     defaultCommandTimeout: 8000,
     pageLoadTimeout: 120000, // Increased timeout
   },
+
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/reports',
+    overwrite: false,
+    html: false,
+    json: true,
+  }
 });
