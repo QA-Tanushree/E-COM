@@ -26,6 +26,14 @@
 // cypress/support/commands.js
 import { loginPage } from './pom/loginPage';
 
-Cypress.Commands.add('login', (username, password) => {
+Cypress.Commands.add('login', (environment = 'test') => {
+  cy.fixture('testData').then((data) => {
+    cy.visit('/');
+    // Get the correct user credentials based on the environment
+    const username = data[environment].username;
+    const password = data[environment].password;
+
+    // Use the username and password to log in
     loginPage.login(username, password);
+  });
 });
