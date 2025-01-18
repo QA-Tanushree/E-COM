@@ -1,0 +1,13 @@
+{
+  "login": {
+    "invalidCredentials": "Invalid username or password.",
+    "invalidUsername": "Please enter a valid email address.",
+    "invalidPassword": "The credentials provided are incorrect",
+    "usernameRequired": "No customer account found",
+    "passwordRequired": "The credentials provided are incorrect"
+  },
+  "signup": {
+    "emailInvalid": "Please enter a valid email address.",
+    "passwordMismatch": "Passwords do not match."
+  }
+}

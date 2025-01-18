@@ -2,7 +2,8 @@
     "test": {
         "username":"tan00@gmail.com",
         "password":"Tanu123",
-        "lockUser":"locked_out_user",
+        "invalidUsername":"invalidUsername",
+        "invalidPassword":"invalidPassword",
         "performanceUser":"performance_glitch_user",
         "errorUser":"error_user",
         "visualUser":"visual_user",
