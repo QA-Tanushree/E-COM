@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  E-com:
     runs-on: ubuntu-latest  # Ensure the job runs on Ubuntu
 
     steps:
