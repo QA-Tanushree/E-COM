@@ -189,9 +189,12 @@ npx mochawesome-report-generator merged.json
 
 ![image](https://github.com/user-attachments/assets/39d58d5c-cb2b-4554-a101-e812696a55fb)
 
+bash
+
 npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
 
 npm install fs path
+
 
 
 Directory Creation: Ensures both versioned and deployment directories are created if they don't already exist.
