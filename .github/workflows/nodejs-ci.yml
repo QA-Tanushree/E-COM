@@ -4,28 +4,37 @@ on:
   push:
     branches:
       - main
+  pull_request:  # Trigger on pull requests too
+    branches:
+      - main
 
 jobs:
   E-com:
-    runs-on: ubuntu-latest  # Ensure the job runs on Ubuntu
+    runs-on: ubuntu-latest  # Runs on the latest stable Ubuntu runner
 
     steps:
+      # Step 1: Check out the repository code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
+      # Step 3: Install dependencies
       - name: Install dependencies
-        run: npm install  # Install project dependencies
+        run: npm install
 
-      - name: Install Cypress Dependencies
-        run: npm ci  # Ensures Cypress and other dependencies are installed
-
-      - name: Set executable permissions for Cypress binary
-        run: chmod +x ./node_modules/.bin/cypress  # Ensure the Cypress binary is executable
-
+      # Step 4: Run Cypress tests
       - name: Run Cypress Tests
-        run: npx cypress run  # Run Cypress using npx
+        run: npx cypress run
+
+      # Optional: Upload test artifacts (if required)
+      - name: Upload Cypress screenshots and videos
+        if: failure()  # Only upload artifacts if the tests fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: cypress/screenshots,cypress/videos  # Specify paths to screenshots and videos
