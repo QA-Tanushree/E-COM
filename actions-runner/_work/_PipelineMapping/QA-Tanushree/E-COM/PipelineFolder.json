@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "QA-Tanushree/E-COM",
+  "pipelineDirectory": "E-COM",
+  "workspaceDirectory": "E-COM\\E-COM",
+  "repositories": {
+    "QA-Tanushree/E-COM": {
+      "repositoryPath": "E-COM\\E-COM",
+      "lastRunOn": "01/20/2025 18:26:14 +06:00"
+    }
+  },
+  "lastRunOn": "01/20/2025 18:26:14 +06:00"
+}

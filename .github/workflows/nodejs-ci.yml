@@ -10,7 +10,7 @@ on:
 
 jobs:
   E-com:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # Use the self-hosted runner
 
     steps:
       - name: Checkout code
@@ -21,18 +21,8 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install Cypress dependencies
-        run: npm ci
-
-      - name: Set executable permissions for Cypress binary
-        run: chmod +x ./node_modules/.bin/cypress
+      - name: Install dependencies
+        run: npm install
 
       - name: Run Cypress Tests
         run: npx cypress run
-
-      - name: Upload Cypress artifacts on failure
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-artifacts
-          path: cypress/screenshots,cypress/videos
