@@ -6,7 +6,13 @@
     "test": "cypress run",
     "generate-report": "node generate-report.js",
     "clean-reports": "rm -rf cypress/reports/*",
-    "generate-report1": "mochawesome-merge cypress/reports/*.json -o merged-${npm_package_version}.json && npx mochawesome-report-generator merged-${npm_package_version}.json --reportDir cypress/reports --overwrite"
+    "generate-report1": "mochawesome-merge cypress/reports/*.json -o merged-${npm_package_version}.json && npx mochawesome-report-generator merged-${npm_package_version}.json --reportDir cypress/reports --overwrite",
+
+    "report": "node generate-report.js",
+    "test:report": "npm run test && npm run report"
+
+  
+  
   },
   "keywords": [],
   "author": "",
@@ -99,6 +105,7 @@
     "flat": "^5.0.2",
     "forever-agent": "^0.6.1",
     "form-data": "^2.3.3",
+    "fs": "^0.0.1-security",
     "fs-extra": "^9.1.0",
     "fs.realpath": "^1.0.0",
     "fsu": "^1.1.1",
@@ -178,6 +185,7 @@
     "p-locate": "^5.0.0",
     "p-map": "^4.0.0",
     "p-try": "^2.2.0",
+    "path": "^0.12.7",
     "path-exists": "^4.0.0",
     "path-is-absolute": "^1.0.1",
     "path-key": "^3.1.1",
