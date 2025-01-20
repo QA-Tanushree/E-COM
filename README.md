@@ -186,6 +186,23 @@ bash
 npx mochawesome-merge cypress/reports/*.json -o merged.json  
 npx mochawesome-report-generator merged.json
 
+
+![image](https://github.com/user-attachments/assets/39d58d5c-cb2b-4554-a101-e812696a55fb)
+
+npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+npm install fs path
+
+
+Directory Creation: Ensures both versioned and deployment directories are created if they don't already exist.
+
+Version Increment: Correctly reads, increments, and saves the version in version.json.
+
+Report Path Management: Ensures paths to the merged JSON, versioned report, and final deployment report are correctly handled.
+
+File Cleanup: Deletes unnecessary files from reportDir while keeping versioned and deployment reports safe.
+
+Error Handling: Adds checks and logs for potential errors during file operations and command execution.
+
 # Conclusion
 
 In this article, we showcased how Cypress can be leveraged to build a robust E2E testing framework for an e-commerce application. By following best practices like using POM, configuring retries, and integrating with CI/CD, you can ensure high-quality software delivery with minimal manual intervention.
