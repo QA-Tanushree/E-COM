@@ -20,8 +20,8 @@ const deploymentDir = path.join(reportDir, 'deployment'); // Directory for final
 let versionData = JSON.parse(fs.readFileSync(versionFilePath, 'utf8'));
 let currentVersion = versionData.version.split('.');
 
-// Increment the version (minor increment)
-currentVersion[1] = parseInt(currentVersion[1]) + 1;
+// Increment the minor version
+currentVersion[2] = (parseInt(currentVersion[2]) || 0) + 1; // Patch increment
 const newVersion = currentVersion.join('.');
 
 // Save the incremented version back to version.json
@@ -36,7 +36,8 @@ exec(
   `npx mochawesome-merge ${reportDir}/*.json -o ${mergedFilePath} && npx mochawesome-report-generator ${mergedFilePath} --reportDir ${versionedDir} --overwrite --reportFilename report-${newVersion}`,
   (error, stdout, stderr) => {
     if (error) {
-      console.error(`Error generating report: ${error}`);
+      console.error(`Error generating report: ${error.message}`);
+      console.error(stderr);
       return;
     }
 
@@ -60,7 +61,7 @@ exec(
     // Delete the merged JSON file
     fs.unlink(mergedFilePath, (err) => {
       if (err) {
-        console.error(`Error deleting merged JSON file: ${err}`);
+        console.error(`Error deleting merged JSON file: ${err.message}`);
       } else {
         console.log(`Merged JSON file deleted: ${mergedFilePath}`);
       }
@@ -69,12 +70,11 @@ exec(
     // Delete individual test report files in the report directory
     fs.readdir(reportDir, (err, files) => {
       if (err) {
-        console.error(`Error reading report directory: ${err}`);
+        console.error(`Error reading report directory: ${err.message}`);
         return;
       }
 
       files.forEach(file => {
-        // Delete only individual test files (JSON & HTML) excluding versioned and final reports
         const filePath = path.join(reportDir, file);
         if (
           (file.endsWith('.json') || file.endsWith('.html')) &&
@@ -83,7 +83,7 @@ exec(
         ) {
           fs.unlink(filePath, (err) => {
             if (err) {
-              console.error(`Error deleting file ${file}: ${err}`);
+              console.error(`Error deleting file ${file}: ${err.message}`);
             } else {
               console.log(`Deleted individual test report file: ${file}`);
             }
